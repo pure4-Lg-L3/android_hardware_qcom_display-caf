@@ -1,12 +1,12 @@
 #Common headers
-common_includes := hardware/qcom/display-caf/libgralloc
-common_includes += hardware/qcom/display-caf/liboverlay
-common_includes += hardware/qcom/display-caf/libcopybit
-common_includes += hardware/qcom/display-caf/libqdutils
-common_includes += hardware/qcom/display-caf/libhwcomposer
-common_includes += hardware/qcom/display-caf/libexternal
-common_includes += hardware/qcom/display-caf/libqservice
-common_includes += hardware/qcom/display-caf/libvirtual
+common_includes := hardware/qcom/display-legacy/libgralloc
+common_includes += hardware/qcom/display-legacy/liboverlay
+common_includes += hardware/qcom/display-legacy/libcopybit
+common_includes += hardware/qcom/display-legacy/libqdutils
+common_includes += hardware/qcom/display-legacy/libhwcomposer
+common_includes += hardware/qcom/display-legacy/libexternal
+common_includes += hardware/qcom/display-legacy/libqservice
+common_includes += hardware/qcom/display-legacy/libvirtual
 
 ifeq ($(TARGET_USES_POST_PROCESSING),true)
     common_flags     += -DUSES_POST_PROCESSING
@@ -26,10 +26,6 @@ ifeq ($(ARCH_ARM_HAVE_NEON),true)
     common_flags += -D__ARM_HAVE_NEON
 endif
 
-ifneq ($(filter msm8974 msm8x74 msm8226 msm8x26,$(TARGET_BOARD_PLATFORM)),)
-    common_flags += -DVENUS_COLOR_FORMAT
-    common_flags += -DMDSS_TARGET
-endif
 
 # Executed only on QCOM BSPs
 ifeq ($(TARGET_USES_QCOM_BSP),true)
